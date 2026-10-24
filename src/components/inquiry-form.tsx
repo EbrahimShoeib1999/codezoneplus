@@ -182,15 +182,27 @@ export function InquiryForm({
             <select
               id="inquiry-serviceCategory"
               value={formData.serviceCategory}
-              onChange={(e) => setFormData({ ...formData, serviceCategory: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-[#0B0F12] border border-neutral-300 dark:border-neutral-800 focus:border-[#A3E635] text-neutral-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#A3E635] text-sm"
+              onChange={(e) => setField("serviceCategory", e.target.value)}
+              aria-invalid={errors.serviceCategory ? true : undefined}
+              aria-describedby={errors.serviceCategory ? "inquiry-serviceCategory-error" : undefined}
+              className={`w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-[#0B0F12] border ${
+                errors.serviceCategory
+                  ? "border-red-500"
+                  : "border-neutral-300 dark:border-neutral-800 focus:border-[#A3E635]"
+              } text-neutral-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#A3E635] text-sm ${formData.serviceCategory ? "" : "text-neutral-400"}`}
             >
+              <option value="" disabled hidden>
+                {locale === "ar" ? "-- اختر الخدمة المطلوبة --" : "-- Select a service --"}
+              </option>
               {SERVICES.map((s) => (
                 <option key={s.id} value={s.title[locale]}>
                   {s.title[locale]}
                 </option>
               ))}
             </select>
+            {errors.serviceCategory && (
+              <p id="inquiry-serviceCategory-error" className="mt-1 text-xs text-red-500">{errors.serviceCategory}</p>
+            )}
           </div>
         </div>
 

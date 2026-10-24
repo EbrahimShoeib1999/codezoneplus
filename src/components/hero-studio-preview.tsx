@@ -41,9 +41,9 @@ export function HeroStudioPreview({ locale }: HeroStudioPreviewProps) {
 
   return (
     <div className="relative w-full max-w-5xl mx-auto mt-12 sm:mt-16 select-none" dir={rtl ? "rtl" : "ltr"}>
-      {/* Ambient glow backdrop */}
+      {/* Ambient glow backdrop — static (no infinite loop on a blurred layer) */}
       <div
-        className="absolute -inset-2 sm:-inset-4 rounded-[2.5rem] bg-gradient-to-tr from-[#A3E635]/20 via-transparent to-[#A3E635]/10 blur-2xl opacity-80 pointer-events-none cz-pulse-glow"
+        className="absolute -inset-2 sm:-inset-4 rounded-[2.5rem] bg-gradient-to-tr from-[#A3E635]/20 via-transparent to-[#A3E635]/10 blur-2xl opacity-80 pointer-events-none"
         aria-hidden="true"
       />
 

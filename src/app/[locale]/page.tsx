@@ -114,9 +114,10 @@ export default async function HomePage({
     <div className="w-full">
       {/* 1. HERO SECTION (Redesigned with focal depth, Arabic-first headline, and interactive studio console) */}
       <section className="relative pt-12 pb-20 sm:pt-20 sm:pb-28 lg:pt-24 lg:pb-36 overflow-hidden border-b border-neutral-200 dark:border-neutral-800/80">
-        {/* Subtle background ambient glow */}
+        {/* Subtle background ambient glow — radial-gradient instead of blur filter (identical look, no paint cost) */}
         <div
-          className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#A3E635]/12 rounded-full blur-[140px] pointer-events-none"
+          className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[560px] pointer-events-none"
+          style={{ background: "radial-gradient(closest-side, rgba(163,230,53,0.14), rgba(163,230,53,0.05) 55%, transparent 75%)" }}
           aria-hidden="true"
         />
 
