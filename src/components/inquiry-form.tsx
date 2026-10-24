@@ -121,7 +121,7 @@ export function InquiryForm({
         {/* Name & Company */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
+            <label htmlFor="inquiry-fullName" className="block text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
               {locale === "ar" ? "الاسم الكامل *" : "Full Name *"}
             </label>
             <input
@@ -144,11 +144,12 @@ export function InquiryForm({
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
+            <label htmlFor="inquiry-companyName" className="block text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
               {locale === "ar" ? "اسم الشركة / النشاط (اختياري)" : "Company / Business Name (Optional)"}
             </label>
             <input
               type="text"
+              id="inquiry-companyName"
               value={formData.companyName}
               onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
               placeholder={locale === "ar" ? "مثال: شركة النور للحلول" : "e.g. Acme Corporation"}
@@ -160,11 +161,12 @@ export function InquiryForm({
         {/* Contact detail & method */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
+            <label htmlFor="inquiry-contactDetail" className="block text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
               {locale === "ar" ? "رقم الهاتف أو وسيلة الاتصال (اختياري)" : "Phone / Contact Info (Optional)"}
             </label>
             <input
               type="text"
+              id="inquiry-contactDetail"
               value={formData.contactDetail}
               onChange={(e) => setFormData({ ...formData, contactDetail: e.target.value })}
               placeholder={locale === "ar" ? "010xxxxxxxx" : "+1 555-0199"}
@@ -174,10 +176,11 @@ export function InquiryForm({
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
+            <label htmlFor="inquiry-serviceCategory" className="block text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
               {locale === "ar" ? "الخدمة المطلوبة *" : "Target Service *"}
             </label>
             <select
+              id="inquiry-serviceCategory"
               value={formData.serviceCategory}
               onChange={(e) => setFormData({ ...formData, serviceCategory: e.target.value })}
               className="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-[#0B0F12] border border-neutral-300 dark:border-neutral-800 focus:border-[#A3E635] text-neutral-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#A3E635] text-sm"
@@ -194,10 +197,11 @@ export function InquiryForm({
         {/* Budget & Timeline */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
+            <label htmlFor="inquiry-budget" className="block text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
               {locale === "ar" ? "الميزانية التقريبية المقدرة" : "Estimated Budget Range"}
             </label>
             <select
+              id="inquiry-budget"
               value={formData.approximateBudget}
               onChange={(e) => setFormData({ ...formData, approximateBudget: e.target.value })}
               className="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-[#0B0F12] border border-neutral-300 dark:border-neutral-800 focus:border-[#A3E635] text-neutral-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#A3E635] text-sm"
@@ -212,10 +216,11 @@ export function InquiryForm({
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
+            <label htmlFor="inquiry-timeline" className="block text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
               {locale === "ar" ? "الجدول الزمني المفضل" : "Preferred Target Timeline"}
             </label>
             <select
+              id="inquiry-timeline"
               value={formData.desiredTimeline}
               onChange={(e) => setFormData({ ...formData, desiredTimeline: e.target.value })}
               className="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-[#0B0F12] border border-neutral-300 dark:border-neutral-800 focus:border-[#A3E635] text-neutral-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-[#A3E635] text-sm"
@@ -232,7 +237,7 @@ export function InquiryForm({
 
         {/* Description */}
         <div>
-          <label className="block text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
+          <label htmlFor="inquiry-projectDescription" className="block text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
             {locale === "ar" ? "تفاصيل ومتطلبات المشروع *" : "Project Requirements & Description *"}
           </label>
           <textarea
@@ -260,17 +265,18 @@ export function InquiryForm({
 
         {/* Reference Links */}
         <div>
-          <label className="block text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
-            {locale === "ar" ? "موقعك الحالي أو مواقع كمرجع تعجبك (اختياري)" : "Existing Site or Reference URLs (Optional)"}
-          </label>
-          <input
-            type="text"
-            value={formData.referenceLinks}
-            onChange={(e) => setFormData({ ...formData, referenceLinks: e.target.value })}
-            placeholder={locale === "ar" ? "https://example.com" : "https://example.com"}
-            className="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-[#0B0F12] border border-neutral-300 dark:border-neutral-800 focus:border-[#A3E635] text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:ring-1 focus:ring-[#A3E635] text-sm"
-            dir="ltr"
-          />
+            <label htmlFor="inquiry-referenceLinks" className="block text-sm font-semibold text-neutral-800 dark:text-neutral-200 mb-2">
+              {locale === "ar" ? "موقعك الحالي أو مواقع كمرجع تعجبك (اختياري)" : "Existing Site or Reference URLs (Optional)"}
+            </label>
+            <input
+              type="text"
+              id="inquiry-referenceLinks"
+              value={formData.referenceLinks}
+              onChange={(e) => setFormData({ ...formData, referenceLinks: e.target.value })}
+              placeholder={locale === "ar" ? "https://example.com" : "https://example.com"}
+              className="w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-[#0B0F12] border border-neutral-300 dark:border-neutral-800 focus:border-[#A3E635] text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:ring-1 focus:ring-[#A3E635] text-sm"
+              dir="ltr"
+            />
         </div>
 
         {/* Privacy Consent */}

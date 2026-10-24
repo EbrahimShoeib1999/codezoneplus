@@ -27,12 +27,13 @@ export function LanguageSwitcher({ currentLocale }: { currentLocale: Locale }) {
   return (
     <Link
       href={targetPath}
-      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-neutral-300 dark:border-neutral-800 text-xs font-semibold text-neutral-800 dark:text-neutral-200 hover:border-[#A3E635] dark:hover:border-[#A3E635] hover:text-[#A3E635] dark:hover:text-[#A3E635] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A3E635]"
+      className="inline-flex items-center justify-center gap-1.5 w-10 h-10 sm:w-auto sm:h-auto px-0 sm:px-3 py-1.5 rounded-lg border border-neutral-300 dark:border-neutral-800 text-xs font-semibold text-neutral-800 dark:text-neutral-200 hover:border-[#A3E635] dark:hover:border-[#A3E635] hover:text-[#A3E635] dark:hover:text-[#A3E635] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A3E635]"
       aria-label={`Switch to ${label}`}
       title={`Switch to ${label}`}
     >
       <Globe className="w-3.5 h-3.5 text-[#A3E635]" />
-      <span>{label}</span>
+      {/* Icon-only below sm keeps the header row within narrow (320px) viewports */}
+      <span className="hidden sm:inline">{label}</span>
     </Link>
   );
 }

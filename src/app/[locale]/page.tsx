@@ -717,7 +717,7 @@ export default async function HomePage({
                     </div>
                   </div>
 
-                  <div className="flex flex-col items-center justify-center p-6 sm:p-8 rounded-2xl bg-white/5 border border-white/10 min-w-[260px] text-center">
+                  <div className="flex flex-col items-center justify-center p-6 sm:p-8 rounded-2xl bg-white/5 border border-white/10 w-full lg:w-auto lg:min-w-[260px] text-center">
                     {offer.originalPrice && (
                       <p className="text-sm text-neutral-400 line-through">
                         {offer.originalPrice}
