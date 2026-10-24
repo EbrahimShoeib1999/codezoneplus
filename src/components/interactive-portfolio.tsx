@@ -136,7 +136,10 @@ export function InteractivePortfolio({ items, locale }: InteractivePortfolioProp
       {items.map((item, index) => {
         // First project gets a featured, full-width editorial layout on large screens.
         const featured = index === 0;
-        const spanClass = featured ? "md:col-span-2" : "";
+        // With an even item count, the last 2-col row would leave an empty hole
+        // beside the final card; let it close the row full-width instead.
+        const fillsRow = index === items.length - 1 && items.length % 2 === 0;
+        const spanClass = featured || fillsRow ? "md:col-span-2" : "";
 
         return (
           <Reveal key={item.id} className={`${spanClass} h-full`} delay={(index % 2) * 110} y={34}>

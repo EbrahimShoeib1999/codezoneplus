@@ -121,7 +121,7 @@ export function NavigationHeader({ locale }: { locale: Locale }) {
           : "bg-white/80 dark:bg-[#0B0F12]/85 backdrop-blur-md border-b border-neutral-200/80 dark:border-[#A3E635]/15"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3 sm:gap-4">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3 sm:gap-4">
         {/* CRITICAL: Brand Symbol ONLY in Navbar */}
         <div className="flex-shrink-0 flex items-center gap-3">
           <BrandLogo locale={locale} variant="symbol-only" />
@@ -234,7 +234,7 @@ export function NavigationHeader({ locale }: { locale: Locale }) {
         </nav>
 
         {/* Utility Controls & CTAs */}
-        <div className="flex items-center gap-2 sm:gap-2.5">
+        <div className="flex items-center gap-1.5 sm:gap-2.5">
           <ThemeToggle locale={locale} />
           <LanguageSwitcher currentLocale={locale} />
 
@@ -250,13 +250,15 @@ export function NavigationHeader({ locale }: { locale: Locale }) {
             <span className="hidden 2xl:inline">{dict.actions.chatWhatsApp}</span>
           </a>
 
-          {/* Primary Project Inquiry CTA */}
+          {/* Primary Project Inquiry CTA — icon-only below sm so the row never overflows narrow phones */}
           <Link
             href={`/${locale}/contact`}
-            className="inline-flex items-center gap-1.5 sm:gap-2 bg-[#A3E635] text-[#0B0F12] font-bold text-xs sm:text-sm px-4 sm:px-5 py-2.5 rounded-xl hover:bg-[#bef264] transition-all lime-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white active:scale-95"
+            aria-label={dict.actions.startProject}
+            title={dict.actions.startProject}
+            className="inline-flex items-center justify-center gap-1.5 sm:gap-2 min-h-10 whitespace-nowrap bg-[#A3E635] text-[#0B0F12] font-bold text-xs sm:text-sm px-3 sm:px-5 lg:px-4 py-2.5 rounded-xl hover:bg-[#bef264] transition-all lime-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white active:scale-95"
           >
             <Sparkles className="w-3.5 h-3.5 fill-current" />
-            <span>{dict.actions.startProject}</span>
+            <span className="hidden sm:inline">{dict.actions.startProject}</span>
             <ArrowUpRight className={`w-3.5 h-3.5 ${rtl ? "rotate-180" : ""}`} />
           </Link>
 

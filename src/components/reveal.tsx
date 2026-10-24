@@ -92,9 +92,27 @@ export function Reveal({
         if (!repeat) observer.unobserve(node);
       } else if (repeat) {
         node.classList.remove("is-revealed");
+      } else if (entry.boundingClientRect.bottom <= 0) {
+        // Element sits fully above the viewport (instant anchor/hash/back-forward
+        // jumps past it): reveal now so it is readable when the user scrolls up,
+        // since it can never enter from below.
+        node.classList.add("is-revealed");
+        observer.unobserve(node);
       }
     });
     observer.observe(el);
+
+    // Safety pass: reveal immediately if the element is already within or
+    // above the viewport at registration time. Covers direct navigation,
+    // refresh, browser scroll restoration, back/forward, and filter-driven
+    // re-layouts, where no future scroll event may ever bring the element
+    // through the observer's entry threshold from below.
+    const rect = el.getBoundingClientRect();
+    const viewportH = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top < viewportH) {
+      el.classList.add("is-revealed");
+      if (!repeat) observer.unobserve(el);
+    }
 
     return () => {
       observer.unobserve(el);

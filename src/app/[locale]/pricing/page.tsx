@@ -175,7 +175,7 @@ export default async function PricingPage({
 
                         <div className="mt-auto pt-4 border-t border-neutral-100 dark:border-neutral-800/80">
                           <div className="flex items-end justify-between gap-2 mb-1">
-                            <p dir="auto" className={`font-extrabold text-[#A3E635] font-alexandria whitespace-nowrap ${role === "advanced" ? "text-2xl" : "text-xl"}`}>
+                            <p dir="auto" className={`font-extrabold text-[#A3E635] font-alexandria whitespace-normal sm:whitespace-nowrap ${role === "advanced" ? "text-2xl" : "text-xl"}`}>
                               {item.price[validLocale]}
                             </p>
                             {item.unit && (

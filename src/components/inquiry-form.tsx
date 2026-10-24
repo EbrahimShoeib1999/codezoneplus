@@ -39,6 +39,16 @@ export function InquiryForm({
   const [openedUrl, setOpenedUrl] = React.useState<string | null>(null);
   const [submitted, setSubmitted] = React.useState(false);
 
+  // Update a field and clear its stale validation error as soon as the user edits it.
+  const setField = (key: keyof ProjectInquiryData, value: string) => {
+    setFormData((prev) => ({ ...prev, [key]: value }));
+    setErrors((prev) => {
+      if (!(key in prev)) return prev;
+      const { [key]: _cleared, ...rest } = prev;
+      return rest;
+    });
+  };
+
   const budgetOptions = [
     { ar: "أقل من 10,000 ج.م", en: "Under 10,000 EGP" },
     { ar: "10,000 – 25,000 ج.م", en: "10,000 – 25,000 EGP" },
@@ -116,16 +126,21 @@ export function InquiryForm({
             </label>
             <input
               type="text"
+              id="inquiry-fullName"
               value={formData.fullName}
-              onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+              onChange={(e) => setField("fullName", e.target.value)}
               placeholder={locale === "ar" ? "مثال: م. أحمد عبد الله" : "e.g. John Doe"}
+              aria-invalid={errors.fullName ? true : undefined}
+              aria-describedby={errors.fullName ? "inquiry-fullName-error" : undefined}
               className={`w-full px-4 py-3 rounded-xl bg-neutral-50 dark:bg-[#0B0F12] border ${
                 errors.fullName
                   ? "border-red-500"
                   : "border-neutral-300 dark:border-neutral-800 focus:border-[#A3E635]"
               } text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:ring-1 focus:ring-[#A3E635] text-sm`}
             />
-            {errors.fullName && <p className="mt-1 text-xs text-red-500">{errors.fullName}</p>}
+            {errors.fullName && (
+              <p id="inquiry-fullName-error" className="mt-1 text-xs text-red-500">{errors.fullName}</p>
+            )}
           </div>
 
           <div>
@@ -222,8 +237,11 @@ export function InquiryForm({
           </label>
           <textarea
             rows={4}
+            id="inquiry-projectDescription"
             value={formData.projectDescription}
-            onChange={(e) => setFormData({ ...formData, projectDescription: e.target.value })}
+            onChange={(e) => setField("projectDescription", e.target.value)}
+            aria-invalid={errors.projectDescription ? true : undefined}
+            aria-describedby={errors.projectDescription ? "inquiry-projectDescription-error" : undefined}
             placeholder={
               locale === "ar"
                 ? "اشرح فكرة مشروعك، أهم الصفحات أو الميزات التي تحتاجها، وأي أنظمة خارجية ترغب في ربطها..."
@@ -236,7 +254,7 @@ export function InquiryForm({
             } text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:ring-1 focus:ring-[#A3E635] text-sm`}
           />
           {errors.projectDescription && (
-            <p className="mt-1 text-xs text-red-500">{errors.projectDescription}</p>
+            <p id="inquiry-projectDescription-error" className="mt-1 text-xs text-red-500">{errors.projectDescription}</p>
           )}
         </div>
 
@@ -261,7 +279,16 @@ export function InquiryForm({
             type="checkbox"
             id="privacyConsent"
             checked={consent}
-            onChange={(e) => setConsent(e.target.checked)}
+            onChange={(e) => {
+              setConsent(e.target.checked);
+              setErrors((prev) => {
+                if (!("consent" in prev)) return prev;
+                const { consent: _cleared, ...rest } = prev;
+                return rest;
+              });
+            }}
+            aria-invalid={errors.consent ? true : undefined}
+            aria-describedby={errors.consent ? "inquiry-consent-error" : undefined}
             className="mt-1 h-4 w-4 rounded border-neutral-300 text-[#A3E635] focus:ring-[#A3E635]"
           />
           <label htmlFor="privacyConsent" className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed cursor-pointer">
@@ -284,7 +311,18 @@ export function InquiryForm({
             )}
           </label>
         </div>
-        {errors.consent && <p className="text-xs text-red-500">{errors.consent}</p>}
+        {errors.consent && (
+          <p id="inquiry-consent-error" className="text-xs text-red-500">{errors.consent}</p>
+        )}
+
+        {/* Announce validation failures to assistive tech when submit is blocked */}
+        <div aria-live="polite" role="alert" className="sr-only">
+          {Object.keys(errors).length > 0
+            ? (locale === "ar"
+                ? `لا يمكن الإرسال: ${Object.values(errors).join("؛ ")}`
+                : `Submission blocked: ${Object.values(errors).join(". ")}`)
+            : ""}
+        </div>
 
         {/* Submit Button */}
         <div className="pt-2">
