@@ -1,0 +1,72 @@
+"use client";
+
+import React from "react";
+// @ts-ignore
+import * as Lucide from "lucide-react/dist/cjs/lucide-react.js";
+
+const wrap = (name: string) => {
+  const Comp = (props: any) => {
+    const Icon = (Lucide as any)[name];
+    return Icon ? React.createElement(Icon, props) : null;
+  };
+  Comp.displayName = name;
+  return Comp;
+};
+
+export const ArrowRight = wrap("ArrowRight");
+export const ArrowLeft = wrap("ArrowLeft");
+export const ArrowUpRight = wrap("ArrowUpRight");
+export const Check = wrap("Check");
+export const CheckCircle2 = wrap("CheckCircle2");
+export const CheckCircle = wrap("CheckCircle");
+export const ChevronDown = wrap("ChevronDown");
+export const ChevronUp = wrap("ChevronUp");
+export const ChevronLeft = wrap("ChevronLeft");
+export const ChevronRight = wrap("ChevronRight");
+export const Code = wrap("Code");
+export const Code2 = wrap("Code2");
+export const Globe = wrap("Globe");
+export const Smartphone = wrap("Smartphone");
+export const ShoppingCart = wrap("ShoppingCart");
+export const Utensils = wrap("Utensils");
+export const UtensilsCrossed = wrap("UtensilsCrossed");
+export const Briefcase = wrap("Briefcase");
+export const GraduationCap = wrap("GraduationCap");
+export const Server = wrap("Server");
+export const Palette = wrap("Palette");
+export const Cloud = wrap("Cloud");
+export const Headphones = wrap("Headphones");
+export const Shield = wrap("Shield");
+export const ShieldCheck = wrap("ShieldCheck");
+export const ShieldAlert = wrap("ShieldAlert");
+export const Clock = wrap("Clock");
+export const Sparkles = wrap("Sparkles");
+export const ExternalLink = wrap("ExternalLink");
+export const Send = wrap("Send");
+export const Phone = wrap("Phone");
+export const MessageCircle = wrap("MessageCircle");
+export const Menu = wrap("Menu");
+export const X = wrap("X");
+export const Sun = wrap("Sun");
+export const Moon = wrap("Moon");
+export const HelpCircle = wrap("HelpCircle");
+export const FileText = wrap("FileText");
+export const FileCheck = wrap("FileCheck");
+export const FolderGit2 = wrap("FolderGit2");
+export const Layers = wrap("Layers");
+export const Zap = wrap("Zap");
+export const AlertCircle = wrap("AlertCircle");
+export const Info = wrap("Info");
+export const Lock = wrap("Lock");
+export const Database = wrap("Database");
+export const RefreshCw = wrap("RefreshCw");
+export const Terminal = wrap("Terminal");
+export const Compass = wrap("Compass");
+export const Cpu = wrap("Cpu");
+export const Target = wrap("Target");
+export const Eye = wrap("Eye");
+export const Heart = wrap("Heart");
+export const Cookie = wrap("Cookie");
+export const Tag = wrap("Tag");
+export const Home = wrap("Home");
+export const Search = wrap("Search");

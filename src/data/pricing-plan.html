@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>خطة تسعير خدمات البرمجة المخصصة – السوق المصري</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F7F9F2;--surface:#fff;--ink:#17230D;--muted:#5E6B52;--line:#E3E9D6;--lime:#B4F44C;--lime-soft:#F0FBD9;--lime-deep:#3F6B00;color-scheme:light}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{font-family:'Cairo',Tahoma,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8;font-size:16px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+header.hero{background:var(--lime);color:var(--ink);padding:64px 0 56px}
+.hero h1{font-size:clamp(28px,5vw,46px);font-weight:900;line-height:1.35;max-width:18ch}
+.hero p{color:#2F4318;margin-top:14px;max-width:60ch;font-size:17px}
+.stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.stack span{background:rgba(255,255,255,.55);border:1px solid rgba(23,35,13,.18);border-radius:99px;padding:2px 14px;font-size:14px;font-weight:600;color:var(--ink)}
+nav{position:sticky;top:0;z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:4px;overflow-x:auto;padding-top:8px;padding-bottom:8px;scrollbar-width:none}
+nav a{white-space:nowrap;text-decoration:none;color:var(--muted);font-weight:600;font-size:14px;padding:4px 14px;border-radius:8px}
+nav a:hover,nav a:focus-visible{background:var(--lime);color:var(--ink);outline:none}
+.note{background:var(--lime-soft);border-inline-start:4px solid var(--lime);border-radius:0 10px 10px 0;padding:14px 18px;margin:32px 0 8px;font-size:15px}
+.note b{color:var(--lime-deep)}
+section{margin-top:44px}
+section h2{font-size:24px;font-weight:700;display:flex;align-items:center;gap:12px}
+section h2::before{content:"";width:6px;height:26px;border-radius:3px;background:var(--lime)}
+.list{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-top:14px;overflow:hidden}
+.head,.row{display:grid;grid-template-columns:1fr 190px 120px;gap:16px;padding:14px 22px;align-items:center}
+.head{background:var(--lime);color:var(--ink);font-size:13px;font-weight:600;padding-top:9px;padding-bottom:9px}
+.row+.row{border-top:1px solid var(--line)}
+.row:hover{background:var(--lime-soft)}
+.name{font-weight:600}
+.name small{display:block;font-weight:400;color:var(--muted);font-size:13.5px;line-height:1.6}
+.price{font-weight:900;font-size:18px;color:var(--ink);direction:ltr;text-align:right;white-space:nowrap}
+.price b{background:var(--lime);border-radius:8px;padding:2px 10px;display:inline-block}
+.price em{font-style:normal;font-weight:600;font-size:12px;margin-inline-start:4px}
+.dur{color:var(--muted);font-size:14px}
+.foot{color:var(--muted);font-size:14px;margin-top:10px;padding-inline:4px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.two ul{list-style:none;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-top:14px}
+.two li{padding:14px 20px;font-size:15px}
+.two li+li{border-top:1px solid var(--line)}
+
+.sub{font-weight:700;font-size:17px;margin-top:4px}
+footer{margin:56px 0 40px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media (max-width:720px){
+ .head{display:none}
+ .row{grid-template-columns:1fr auto;gap:2px 12px;padding:14px 16px}
+ .name{grid-column:1/-1}
+ .dur{order:3}
+ .price{font-size:18px;text-align:right;order:2}
+ .two{grid-template-columns:1fr}
+}
+@media print{*{-webkit-print-color-adjust:exact;print-color-adjust:exact}nav{display:none}.hero{padding:24px 0}body{background:#fff}section{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<h1>خطة تسعير خدمات البرمجة المخصصة</h1>
+<p>أسعار واقعية للسوق المصري، لمشاريع بتتنفذ بكود مخصص من الصفر. أرخص من الشركات الكبيرة، وأغلى من الفريلانسر المبتدئ.</p>
+<div class="stack"><span>React</span><span>Next.js</span><span>React Native</span><span>NestJS</span><span>Express</span></div>
+</div></header>
+<nav><div class="wrap" id="nav"></div></nav>
+<main class="wrap">
+<p class="note"><b>الأسعار بالجنيه المصري</b> وتقديرية حسب سوق الفريلانسرز في 2026. بتتحرك مع التضخم وسعر الدولار، فراجعها كل 3–6 شهور. السعر الفعلي بيتحدد حسب تفاصيل المشروع.</p>
+<div id="app"></div>
+
+<section id="tips"><h2>نصائح تنفيذية</h2>
+<ul class="two" style="display:block;list-style:none;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-top:14px">
+<li style="padding:14px 20px"><b style="color:var(--lime-deep)">نظام الدفعات:</b> 40–50% مقدم، 30% عند تسليم النسخة التجريبية، والباقي عند التسليم النهائي.</li>
+<li style="padding:14px 20px;border-top:1px solid var(--line)"><b style="color:var(--lime-deep)">نطاق مكتوب:</b> اكتب Scope واضح وحدد عدد جولات التعديل (2–3). أي ميزة خارجه تتسعّر بشكل منفصل.</li>
+<li style="padding:14px 20px;border-top:1px solid var(--line)"><b style="color:var(--lime-deep)">الدولار:</b> اربط الأسعار بالدولار في المشاريع الكبيرة، مع بند تعديل لو الدولار اتحرك أكتر من نسبة معينة.</li>
+<li style="padding:14px 20px;border-top:1px solid var(--line)"><b style="color:var(--lime-deep)">باقات:</b> قدّم 3 مستويات (أساسي / متوسط / متقدم) في كل خدمة عشان العميل يختار بدل ما يفاوض على السعر.</li>
+<li style="padding:14px 20px;border-top:1px solid var(--line)"><b style="color:var(--lime-deep)">الاستضافة:</b> اعمل اشتراك سنوي (VPS أو Vercel) بهامش بسيط، فده دخل متكرر.</li>
+<li style="padding:14px 20px;border-top:1px solid var(--line)"><b style="color:var(--lime-deep)">الشركات الناشئة:</b> ممكن تعرض سعر أقل مقابل عقد صيانة طويل، أو نسبة في المشروع في الحالات المناسبة.</li>
+</ul></section>
+
+<section id="market"><h2>المقارنة بالسوق</h2>
+<div class="list">
+<div class="row" style="grid-template-columns:200px 1fr"><div class="name">فريلانسر مبتدئ</div><div>بيقدم أقل من الأرقام دي بـ 40–60% (جودة وضمان أقل).</div></div>
+<div class="row" style="grid-template-columns:200px 1fr"><div class="name">شركة برمجيات مصرية صغيرة/متوسطة</div><div>بتقدم 1.5–3 أضعاف الأسعار دي.</div></div>
+<div class="row" style="grid-template-columns:200px 1fr"><div class="name">بدائل جاهزة (WordPress / Shopify / قوالب)</div><div>أرخص بكتير، فمبرر سعرك هو الأداء والتخصيص الكامل وعدم الاعتماد على Plugins.</div></div>
+</div></section>
+<footer>تقدر تطبع الصفحة أو تحفظها PDF من المتصفح، والتصميم مظبوط للطباعة.</footer>
+</main>
+<script>
+const S=[
+{id:'sites',t:'المواقع التعريفية',r:[
+['Landing Page','صفحة واحدة بـ Next.js، تصميم + نموذج تواصل + SEO أساسي','3,000 – 7,000','3–7 أيام'],
+['Portfolio شخصي','أنيميشن + صفحات مشاريع','4,000 – 9,000','5–10 أيام'],
+['موقع شركة','5–8 صفحات. ثنائي اللغة (عربي/إنجليزي) يزود 20–30%','8,000 – 18,000','2–3 أسابيع'],
+['موقع شركة + لوحة تحكم بسيطة','تعديل المحتوى، رسائل العملاء، مدونة','15,000 – 30,000','3–5 أسابيع']]},
+{id:'stores',t:'المتاجر الإلكترونية',r:[
+['متجر بسيط','منتجات + سلة + طلبات + دفع عند الاستلام','20,000 – 40,000','4–6 أسابيع'],
+['متجر كامل','دفع أونلاين Paymob/Fawry، شحن، كوبونات، مخزون، تقارير','45,000 – 100,000','8–12 أسبوع']]},
+{id:'systems',t:'الأنظمة (POS / ERP / CRM)',r:[
+['منيو مطعم QR + طلبات','بدون كاشير','8,000 – 20,000','2–4 أسابيع'],
+['منيو مطعم متكامل','طلبات + لوحة تحكم + شاشة مطبخ','20,000 – 45,000','4–7 أسابيع'],
+['CRM بسيط','عملاء، متابعات، مهام، تقارير','25,000 – 60,000','5–8 أسابيع'],
+['POS','كاشير، مخزون، ورديات، تقارير','35,000 – 90,000','6–10 أسابيع'],
+['ERP مصغر','مبيعات، مشتريات، مخزون، حسابات، موارد بشرية','80,000 – 250,000+','3–6 شهور']],
+f:'نظام الـ POS الأوفلاين بيزود 30–50% لأنه محتاج مزامنة وتعامل مع الطابعات.'},
+{id:'edu',t:'المنصات التعليمية',r:[
+['منصة بسيطة','كورسات فيديو، تسجيل، دفع، لوحة مدرس','30,000 – 65,000','6–9 أسابيع'],
+['منصة متقدمة','امتحانات، شهادات، لايف، متابعة تقدم، حماية فيديو','70,000 – 160,000','3–5 شهور']]},
+{id:'mobile',t:'تطبيقات الموبايل (React Native)',r:[
+['تطبيق بسيط','واجهات + API جاهز + إشعارات','25,000 – 50,000','4–7 أسابيع'],
+['تطبيق متوسط','تسجيل دخول، دفع، خرائط، شات، لوحة تحكم','55,000 – 120,000','2–4 شهور'],
+['تطبيق كبير','Real-time، Tracking، Multi-role (مثل Uber / توصيل)','130,000 – 300,000+','4–7 شهور']],
+f:'رسوم النشر على Google Play وApp Store (حسابات المطور) عادةً على العميل.'},
+{id:'addons',t:'الإضافات',h:['الإضافة','السعر',''],r:[
+['لغة إضافية','RTL كامل','+15–25%',''],
+['دمج بوابة دفع','Paymob / Fawry / InstaPay','3,000 – 8,000',''],
+['دمج شركات الشحن','','3,000 – 7,000',''],
+['إشعارات واتساب API','','2,500 – 6,000',''],
+['إعداد الاستضافة والدومين','النشر والإعداد','1,500 – 4,000',''],
+['صيانة شهرية','تحديثات، باك أب، دعم. أو 8–15% من قيمة المشروع شهرياً','1,500 – 8,000','شهرياً'],
+['تعديلات خارج النطاق','','250 – 500','للساعة']]}
+];
+const nav=document.getElementById('nav'),app=document.getElementById('app');
+S.forEach(s=>{
+ nav.insertAdjacentHTML('beforeend',`<a href="#${s.id}">${s.t.replace(/ \(.*\)/,'')}</a>`);
+ const h=s.h||['الخدمة','السعر (ج.م)','المدة'];
+ app.insertAdjacentHTML('beforeend',`<section id="${s.id}"><h2>${s.t}</h2><div class="list"><div class="head"><span>${h[0]}</span><span>${h[1]}</span><span>${h[2]}</span></div>`+
+ s.r.map(x=>`<div class="row"><div class="name">${x[0]}${x[1]?`<small>${x[1]}</small>`:''}</div><div class="price"><b>${x[2]}</b>${s.id==='addons'&&!x[2].includes('%')?'<em>ج.م</em>':(s.id!=='addons'?'<em>ج.م</em>':'')}</div><div class="dur">${x[3]}</div></div>`).join('')+
+ `</div>${s.f?`<p class="foot">${s.f}</p>`:''}</section>`);
+});
+nav.insertAdjacentHTML('beforeend','<a href="#tips">نصائح</a><a href="#market">السوق</a>');
+</script>
+</body>
+</html>
